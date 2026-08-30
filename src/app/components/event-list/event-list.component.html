@@ -1,0 +1,53 @@
+<section class="event-list">
+  <header class="event-list__header">
+    <h1>Events</h1>
+    @if (authService.isArrangoer()) {
+      <a routerLink="/events/new" class="event-list__create-link">+ Opret event</a>
+    }
+  </header>
+
+  <form class="event-list__filter" [formGroup]="filterForm" (ngSubmit)="applyFilter()">
+    <input type="search" formControlName="search" placeholder="Søg efter titel…" />
+
+    <select formControlName="genre">
+      <option value="">Alle genrer</option>
+      @for (genre of genres; track genre) {
+        <option [value]="genre">{{ genre }}</option>
+      }
+    </select>
+
+    <button type="submit">Filtrér</button>
+  </form>
+
+  @if (eventService.loading()) {
+    <p>Henter events…</p>
+  } @else if (eventService.error(); as error) {
+    <p class="event-list__error">{{ error }}</p>
+  } @else if (eventService.events().length === 0) {
+    <p>Ingen events matcher din søgning.</p>
+  } @else {
+    <ul class="event-list__grid">
+      @for (event of eventService.events(); track event.id) {
+        <li class="event-card">
+          @if (event.imageUrl) {
+            <img [src]="event.imageUrl" [alt]="event.title" class="event-card__image" />
+          }
+          <div class="event-card__body">
+            <h2><a [routerLink]="['/events', event.id]">{{ event.title }}</a></h2>
+            <p class="event-card__meta">{{ event.genre }} · {{ event.venueName }}</p>
+            @if (authService.isLoggedIn()) {
+              <app-favorite-button [eventId]="event.id" [isFavorite]="!!event.isFavorite" />
+            }
+          </div>
+        </li>
+      }
+    </ul>
+
+    <app-pagination
+      [page]="currentPage"
+      [pageSize]="pageSize"
+      [totalCount]="eventService.totalCount()"
+      (pageChange)="goToPage($event)"
+    />
+  }
+</section>

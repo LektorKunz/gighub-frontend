@@ -1,0 +1,9 @@
+.star-rating {
+  display: inline-flex;
+  gap: 0.1rem;
+  color: #d1d5db;
+
+  .star.filled {
+    color: #f5a623;
+  }
+}

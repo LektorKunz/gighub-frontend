@@ -1,0 +1,42 @@
+@if (loading()) {
+  <p>Henter event…</p>
+} @else if (errorMessage(); as error) {
+  <p class="event-detail__error">{{ error }}</p>
+} @else if (event(); as event) {
+  <article class="event-detail">
+    @if (event.imageUrl) {
+      <img [src]="event.imageUrl" [alt]="event.title" class="event-detail__image" />
+    }
+
+    <header class="event-detail__header">
+      <h1>{{ event.title }}</h1>
+      @if (authService.isLoggedIn()) {
+        <app-favorite-button [eventId]="event.id" [isFavorite]="!!event.isFavorite" (toggled)="onFavoriteToggled($event)" />
+      }
+    </header>
+
+    @if (event.averageRating; as rating) {
+      <app-star-rating [rating]="rating" />
+    }
+
+    <p class="event-detail__meta">
+      {{ event.genre }} · {{ event.venueName }}, {{ event.address }}
+    </p>
+    <p class="event-detail__meta">{{ event.dateTimeUtc | date: 'medium' }}</p>
+    <p>{{ event.description }}</p>
+    <p class="event-detail__capacity">Kapacitet: {{ event.capacity }}</p>
+
+    <app-booking-button [eventId]="event.id" />
+
+    @if (isOwner()) {
+      <div class="event-detail__owner-tools">
+        <h3>Arrangør-værktøjer</h3>
+        <app-image-upload [eventId]="event.id" [currentImageUrl]="event.imageUrl" (uploaded)="onImageUploaded($event)" />
+        <a [routerLink]="['/events', event.id, 'edit']">Rediger event</a>
+        <button type="button" (click)="deleteEvent()">Slet event</button>
+      </div>
+    }
+
+    <app-review-list [eventId]="event.id" />
+  </article>
+}

@@ -1,0 +1,50 @@
+<form class="event-form" [formGroup]="eventForm" (ngSubmit)="submit()">
+  <h2>{{ isEditMode() ? 'Rediger event' : 'Opret event' }}</h2>
+
+  <label>
+    Titel
+    <input type="text" formControlName="title" />
+  </label>
+
+  <label>
+    Beskrivelse
+    <textarea formControlName="description" rows="4"></textarea>
+  </label>
+
+  <label>
+    Genre
+    <select formControlName="genre">
+      @for (genre of genres; track genre) {
+        <option [value]="genre">{{ genre }}</option>
+      }
+    </select>
+  </label>
+
+  <label>
+    Spillested
+    <input type="text" formControlName="venueName" />
+  </label>
+
+  <label>
+    Adresse
+    <input type="text" formControlName="address" />
+  </label>
+
+  <label>
+    Dato og tidspunkt
+    <input type="datetime-local" formControlName="dateTimeUtc" />
+  </label>
+
+  <label>
+    Kapacitet
+    <input type="number" formControlName="capacity" min="1" />
+  </label>
+
+  @if (errorMessage(); as error) {
+    <p class="event-form__error">{{ error }}</p>
+  }
+
+  <button type="submit" [disabled]="loading()">
+    {{ loading() ? 'Gemmer…' : 'Gem event' }}
+  </button>
+</form>

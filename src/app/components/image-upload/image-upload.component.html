@@ -1,0 +1,16 @@
+<div class="image-upload">
+  @if (previewUrl(); as preview) {
+    <img [src]="preview" alt="Forhåndsvisning af eventbillede" class="image-upload__preview" />
+  } @else if (currentImageUrl(); as current) {
+    <img [src]="current" alt="Nuværende eventbillede" class="image-upload__preview" />
+  }
+
+  <label class="image-upload__label">
+    <input type="file" accept="image/*" #fileInput (change)="onFileSelected(fileInput)" hidden />
+    <span>{{ uploading() ? 'Uploader…' : 'Vælg billede' }}</span>
+  </label>
+
+  @if (errorMessage(); as error) {
+    <p class="image-upload__error">{{ error }}</p>
+  }
+</div>

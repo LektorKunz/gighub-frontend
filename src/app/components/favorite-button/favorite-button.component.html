@@ -1,0 +1,11 @@
+<button
+  type="button"
+  class="favorite-button"
+  [class.favorite-button--active]="isFavorite()"
+  [disabled]="pending"
+  [attr.aria-pressed]="isFavorite()"
+  [attr.aria-label]="isFavorite() ? 'Fjern fra favoritter' : 'Tilføj til favoritter'"
+  (click)="toggle()"
+>
+  {{ isFavorite() ? '♥' : '♡' }}
+</button>

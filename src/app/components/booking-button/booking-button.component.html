@@ -1,0 +1,21 @@
+<div class="booking-button">
+  @if (result(); as booking) {
+    <p class="booking-button__status">
+      @if (booking.status === 'Booket') {
+        Du er booket til eventet! 🎉
+      } @else if (booking.status === 'Venteliste') {
+        Eventet er fuldt — du er sat på venteliste.
+      } @else {
+        Booking-status: {{ booking.status }}
+      }
+    </p>
+  } @else {
+    <button type="button" (click)="book()" [disabled]="loading()">
+      {{ loading() ? 'Booker…' : 'Book plads' }}
+    </button>
+  }
+
+  @if (errorMessage(); as error) {
+    <p class="booking-button__error">{{ error }}</p>
+  }
+</div>
