@@ -1,0 +1,26 @@
+.event-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  max-width: 480px;
+  margin: 2rem auto;
+
+  label {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  &__error {
+    color: #dc2626;
+  }
+
+  button {
+    padding: 0.5rem;
+    background: #4338ca;
+    color: white;
+    border: none;
+    border-radius: 0.375rem;
+    cursor: pointer;
+  }
+}

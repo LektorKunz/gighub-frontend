@@ -1,0 +1,13 @@
+<nav class="nav-bar">
+  <a routerLink="/events" class="nav-bar__brand">GigHub</a>
+
+  <div class="nav-bar__links">
+    @if (authService.isLoggedIn()) {
+      <span class="nav-bar__user">{{ authService.currentUser()?.name }}</span>
+      <button type="button" (click)="logout()">Log ud</button>
+    } @else {
+      <a routerLink="/login">Log ind</a>
+      <a routerLink="/register">Opret bruger</a>
+    }
+  </div>
+</nav>

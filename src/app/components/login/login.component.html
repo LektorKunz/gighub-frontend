@@ -1,0 +1,25 @@
+<form class="login-form" [formGroup]="loginForm" (ngSubmit)="submit()">
+  <h2>Log ind</h2>
+
+  <label>
+    Email
+    <input type="email" formControlName="email" />
+  </label>
+
+  <label>
+    Adgangskode
+    <input type="password" formControlName="password" />
+  </label>
+
+  @if (errorMessage(); as error) {
+    <p class="login-form__error">{{ error }}</p>
+  }
+
+  <button type="submit" [disabled]="loading()">
+    {{ loading() ? 'Logger ind…' : 'Log ind' }}
+  </button>
+
+  <p>
+    Ny hos GigHub? <a routerLink="/register">Opret bruger</a>
+  </p>
+</form>

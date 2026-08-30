@@ -1,0 +1,30 @@
+<form class="register-form" [formGroup]="registerForm" (ngSubmit)="submit()">
+  <h2>Opret bruger</h2>
+
+  <label>
+    Navn
+    <input type="text" formControlName="name" />
+  </label>
+
+  <label>
+    Email
+    <input type="email" formControlName="email" />
+  </label>
+
+  <label>
+    Adgangskode
+    <input type="password" formControlName="password" />
+  </label>
+
+  @if (errorMessage(); as error) {
+    <p class="register-form__error">{{ error }}</p>
+  }
+
+  <button type="submit" [disabled]="loading()">
+    {{ loading() ? 'Opretter…' : 'Opret bruger' }}
+  </button>
+
+  <p>
+    Har du allerede en bruger? <a routerLink="/login">Log ind</a>
+  </p>
+</form>

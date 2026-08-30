@@ -1,0 +1,5 @@
+<nav class="pagination" aria-label="Sideskift">
+  <button type="button" (click)="goToPrevious()" [disabled]="!hasPrevious()">&laquo; Forrige</button>
+  <span class="pagination__status">Side {{ page() }} af {{ totalPages() }}</span>
+  <button type="button" (click)="goToNext()" [disabled]="!hasNext()">Næste &raquo;</button>
+</nav>

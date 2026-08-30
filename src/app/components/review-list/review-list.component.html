@@ -1,0 +1,47 @@
+<section class="review-list">
+  <h3>Anmeldelser</h3>
+
+  @if (loading()) {
+    <p>Henter anmeldelser…</p>
+  } @else if (reviews().length === 0) {
+    <p>Ingen anmeldelser endnu.</p>
+  } @else {
+    <ul>
+      @for (review of reviews(); track review.id) {
+        <li class="review-list__item">
+          <app-star-rating [rating]="review.rating" />
+          <p class="review-list__author">{{ review.userName }}</p>
+          <p>{{ review.comment }}</p>
+        </li>
+      }
+    </ul>
+  }
+
+  @if (errorMessage(); as error) {
+    <p class="review-list__error">{{ error }}</p>
+  }
+
+  @if (canReview()) {
+    <form [formGroup]="reviewForm" (ngSubmit)="submitReview()" class="review-list__form">
+      <h4>Skriv en anmeldelse</h4>
+
+      <label>
+        Rating (1-5)
+        <input type="number" formControlName="rating" min="1" max="5" />
+      </label>
+
+      <label>
+        Kommentar
+        <textarea formControlName="comment" rows="3"></textarea>
+      </label>
+
+      <button type="submit" [disabled]="submitting()">
+        {{ submitting() ? 'Sender…' : 'Send anmeldelse' }}
+      </button>
+    </form>
+  } @else if (isLoggedIn()) {
+    <p class="review-list__hint">
+      Du kan kun anmelde events, du har været booket til, og som er overstået.
+    </p>
+  }
+</section>

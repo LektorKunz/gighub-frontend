@@ -1,0 +1,41 @@
+.review-list {
+  &__item {
+    border-bottom: 1px solid #e5e7eb;
+    padding: 0.75rem 0;
+    list-style: none;
+  }
+
+  &__author {
+    font-weight: 600;
+    margin: 0.25rem 0 0;
+  }
+
+  &__error {
+    color: #dc2626;
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    max-width: 400px;
+    margin-top: 1rem;
+
+    label {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+      font-size: 0.9rem;
+    }
+  }
+
+  &__hint {
+    color: #6b7280;
+    font-size: 0.875rem;
+  }
+
+  ul {
+    padding: 0;
+    margin: 0;
+  }
+}

@@ -1,0 +1,40 @@
+.event-detail {
+  max-width: 700px;
+  margin: 0 auto;
+
+  &__error {
+    color: #dc2626;
+  }
+
+  &__image {
+    width: 100%;
+    max-height: 320px;
+    object-fit: cover;
+    border-radius: 0.5rem;
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__meta {
+    color: #6b7280;
+  }
+
+  &__capacity {
+    font-weight: 600;
+  }
+
+  &__owner-tools {
+    margin: 1.5rem 0;
+    padding: 1rem;
+    background: #f9fafb;
+    border-radius: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: flex-start;
+  }
+}
