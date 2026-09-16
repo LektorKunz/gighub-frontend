@@ -13,7 +13,7 @@ npm start        # svarer til `ng serve` — kører på http://localhost:4200
 Andre kommandoer:
 
 ```bash
-npm run build     # `ng build` — produktionsbuild i dist/facit-frontend (verificeret, se nedenfor)
+npm run build     # `ng build` — produktionsbuild i dist/gighub-frontend (verificeret, se nedenfor)
 npm test          # `ng test` — Karma/Jasmine unit-tests
 ```
 

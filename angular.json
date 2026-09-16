@@ -6,7 +6,7 @@
   },
   "newProjectRoot": "projects",
   "projects": {
-    "facit-frontend": {
+    "gighub-frontend": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -74,10 +74,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "facit-frontend:build:production"
+              "buildTarget": "gighub-frontend:build:production"
             },
             "development": {
-              "buildTarget": "facit-frontend:build:development"
+              "buildTarget": "gighub-frontend:build:development"
             }
           },
           "defaultConfiguration": "development"
