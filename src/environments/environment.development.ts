@@ -3,5 +3,5 @@
 // Tjek den faktiske port i facit-backend/Properties/launchSettings.json og ret her, hvis den afviger.
 export const environment = {
   production: false,
-  apiUrl: 'https://localhost:5001/api',
+  apiUrl: 'https://localhost:8080/api',
 };

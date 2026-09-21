@@ -2,5 +2,5 @@
 // Ret apiUrl til den rigtige, deployede backend-adresse, når/hvis I deployer.
 export const environment = {
   production: true,
-  apiUrl: 'https://localhost:5001/api',
+  apiUrl: 'https://localhost:8080/api',
 };
